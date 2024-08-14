@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+    <p th:text="Hello"/>
+    <div th:each="user : ${users}">
+        <p th:text="'id: ' + ${user.id} + ' name: ' + ${user.name} + ' last name: ' + ${user.lastName} + ' email: ' + ${user.email}"/>
+        <form th:action="@{/users/edit}">
+            <button type="submit" th:name="id" th:value="${user.id}">Edit</button>
+        </form>
+        <form th:method="POST" th:action="@{/users/delete}">
+            <button type="submit" th:name="id" th:value="${user.id}">Delete</button>
+        </form>
+    </div>
+    <a href="/users/new">Create new user</a>
+</body>
+</html>
